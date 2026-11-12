@@ -62,8 +62,9 @@
   .acc img { width: 100%; display: block; padding: 8px; background: #141414; }
 
   /* Prilagodba za mobitel (ispod 480px vraca na 1 account i 3 heroja u redu) */
-  @media (max-width: 480px) {
-    .img-crop-box { max-height: 105vw; } 
+  @media (max-width: 600px) {
+    .img-crop-box { max-height: 88vw; }
+     
     .accounts { grid-template-columns: 1fr; }
     .heroes-grid { grid-template-columns: repeat(5, 1fr); gap: 5px; } 
   }
@@ -159,8 +160,9 @@
     background: #ffffff;
     box-shadow: 0 0 8px rgba(255, 204, 0, 0.8);
   }
-  @media (max-width: 480px) {
-    .img-crop-box { max-height: 105vw; }
+  @media (max-width: 600px) {
+    .img-crop-box { max-height: 88vw; }
+    
     .bleach-title { font-size: 20px; letter-spacing: 1.5px; }
     .bleach-subtitle { font-size: 10px; letter-spacing: 1px; }
   }
