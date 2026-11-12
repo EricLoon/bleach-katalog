@@ -337,7 +337,7 @@
   .back-to-top {
     position: fixed !important;
     right: 18px !important;
-    bottom: 24px !important;
+    bottom: 95px !important;
     z-index: 99999 !important;
     background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
     color: #ffe680 !important;
@@ -407,6 +407,84 @@
     text-shadow: 0 0 10px rgba(255, 230, 128, 0.95) !important;
   }
   /* RED DRIVE BTN END */
+/* PAYMENT BAR START */
+  .payment-bar {
+    width: 100%;
+    max-width: 1080px;
+    background: linear-gradient(90deg, #120921 0%, #241240 50%, #120921 100%);
+    border: 1.5px solid #7e22ce;
+    border-radius: 10px;
+    padding: 9px 16px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.75), 0 0 14px rgba(147, 51, 234, 0.3);
+    position: relative;
+    z-index: 2;
+  }
+  .payment-label {
+    font-size: 13.5px;
+    font-weight: 800;
+    color: #e9d5ff;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  .pay-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 13px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+  .pay-paypal {
+    background: linear-gradient(135deg, #003087 0%, #0070e0 100%);
+    border: 1.5px solid #7dd3fc;
+    color: #ffffff;
+  }
+  .pay-steam {
+    background: linear-gradient(135deg, #171a21 0%, #2a475e 100%);
+    border: 1.5px solid #66c0f4;
+    color: #e0f2fe;
+  }
+  /* PAYMENT BAR END */
+/* FLAG COUNTER START */
+  .flag-counter-box {
+    position: fixed;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    background: #0d0717;
+    border: 2px solid #a855f7;
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.85), 0 0 16px rgba(168, 85, 247, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .flag-counter-box:hover {
+    border-color: #ffcc00;
+    box-shadow: 0 0 22px rgba(255, 204, 0, 0.75);
+  }
+  .flag-counter-box img {
+    display: block;
+    border-radius: 6px;
+  }
+  @media (max-width: 1280px) {
+    .flag-counter-box {
+      position: static;
+      transform: none;
+      margin: 24px auto 12px auto;
+      width: fit-content;
+    }
+  }
+  /* FLAG COUNTER END */
 </style>
 </head>
 <body>
@@ -468,7 +546,21 @@
     <img src="slike/banner.jpg" alt="Bleach Soul Resonance Promo Banner">
   </div>
   <!-- FULL BANNER HTML END -->
-  <div class="discord-bar"><span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span><span class="discord-tag" id="dcTag">GenesisGacha#0271</span><button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button></div>
+  <div class="discord-bar"><span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span><span class="discord-tag" id="dcTag">GenesisGacha#0271</span><button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button><!-- LIVE COUNTER START -->
+    <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(0,0,0,0.55); border:1px solid #ffcc00; border-radius:6px; padding:3px 9px; box-shadow:0 0 10px rgba(255,204,0,0.35);" title="Real-time visitors online">
+      <span style="display:inline-block; width:8px; height:8px; background:#22c55e; border-radius:50%; box-shadow:0 0 8px #22c55e;"></span>
+      <span style="font-size:12px; font-weight:bold; color:#ffe680;">LIVE:</span>
+      <script id="_waugen">var _wau = _wau || []; _wau.push(["small", "bleachcat26", "gen"]);</script>
+      <script async src="//waust.at/s.js"></script>
+    </div>
+    <!-- LIVE COUNTER END --></div>
+  <!-- PAYMENT BAR HTML START -->
+  <div class="payment-bar">
+    <span class="payment-label">💳 Accepted Payment Methods:</span>
+    <span class="pay-badge pay-paypal">🅿️ PayPal</span>
+    <span class="pay-badge pay-steam">🎮 Steam Gift Cards (EU)</span>
+  </div>
+  <!-- PAYMENT BAR HTML END -->
   <div class="bleach-panel"><div class="bleach-title">BLEACH: SOUL RESONANCE</div><div class="bleach-subtitle">EU • APLUS GUEST STARTER CATALOG • SELECT HEROES TO FILTER</div><div id="heroes" class="heroes-grid"></div></div>
   <div id="status" class="status"></div>
   <div id="accounts" class="accounts"></div>
@@ -561,5 +653,23 @@
     function kopirajDiscord(btn) { navigator.clipboard.writeText(document.getElementById('dcTag').innerText); btn.innerText = '✓ Copied!'; setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000); }
     filtriraj();
   </script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6af60c7fe84c933e6cc13678/1k78i1khn';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+<!-- FLAG COUNTER HTML START -->
+  <div class="flag-counter-box">
+    <a href="https://info.flagcounter.com/E57c" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/E57c/bg_000000/txt_FFFFFF/border_CCCCCC/columns_1/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+  </div>
+  <!-- FLAG COUNTER HTML END -->
 </body>
 </html>
