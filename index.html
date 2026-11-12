@@ -434,7 +434,7 @@
 
   .back-to-top {
     position: fixed !important;
-    right: 220px !important;
+    right: 110px !important;
     bottom: 24px !important;
     z-index: 99999 !important;
     background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
@@ -499,8 +499,9 @@
   }
   .flag-counter-box {
     position: fixed;
-    right: 16px;
-    bottom: 145px;
+    top: 295px;
+    left: calc(50% + 540px + ((50vw - 540px) / 2));
+    transform: translateX(-50%);
     z-index: 90;
     background: #0d0717;
     border: 2px solid #a855f7;
@@ -525,10 +526,11 @@
       width: fit-content;
     }
   }
-  @media (max-width: 1280px) {
+  @media (max-width: 1520px) {
     .flag-counter-box {
       position: static;
-      margin: 16px auto;
+      transform: none;
+      margin: 10px auto 16px auto;
       width: fit-content;
     }
   }
