@@ -6,11 +6,18 @@
 <title>Bleach Soul Resonance Catalog</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+  
   @keyframes bgPulse {
-    0%, 100% { background-color: #08070a; }
-    50% { background-color: #1a0d2e; }
+    0%, 100% { background-color: #08070a; box-shadow: inset 0 0 80px rgba(0,0,0,0.9); }
+    35% { background-color: #21103b; box-shadow: inset 0 0 100px rgba(123, 66, 188, 0.25); }
+    42% { background-color: #0c0814; }
+    44% { background-color: #6b38b5; box-shadow: inset 0 0 180px rgba(235, 210, 255, 0.75); }
+    46% { background-color: #120921; box-shadow: none; }
+    48% { background-color: #8a4fd1; box-shadow: inset 0 0 220px rgba(255, 255, 255, 0.9); }
+    51% { background-color: #190d2e; box-shadow: inset 0 0 90px rgba(123, 66, 188, 0.3); }
+    75% { background-color: #241142; }
   }
-  body { background-color: #08070a; color: #fff; padding: 15px; display: flex; flex-direction: column; align-items: center; animation: bgPulse 8s infinite ease-in-out; }
+  body { background-color: #08070a; color: #fff; padding: 15px; display: flex; flex-direction: column; align-items: center; animation: bgPulse 4.5s infinite ease-in-out; }
   
   /* Upola manje i cistije ikonice heroja (12 u redu na racunaru) */
   .heroes-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 9px; width: 100%; max-width: 1060px; margin-bottom: 16px; }
