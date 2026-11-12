@@ -334,32 +334,8 @@
   }
   /* SMOOTH SCROLL & PERF END */
 
-  .back-to-top {
-    position: fixed !important;
-    right: 18px !important;
-    bottom: 95px !important;
-    z-index: 99999 !important;
-    background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
-    color: #ffe680 !important;
-    border: 2px solid #ffcc00 !important;
-    border-radius: 50px !important;
-    padding: 12px 18px !important;
-    font-size: 13px !important;
-    font-weight: 900 !important;
-    letter-spacing: 0.8px !important;
-    text-transform: uppercase !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 16px rgba(255, 204, 0, 0.75) !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    transition: transform 0.2s ease, background 0.2s ease !important;
-  }
-  .back-to-top:hover {
-    background: #ffcc00 !important;
-    color: #140a21 !important;
-    transform: translateY(-3px) scale(1.05) !important;
-  }
+  
+  
 
 /* RED DRIVE BTN START */
   @keyframes redDriveGlow {
@@ -454,12 +430,76 @@
     color: #e0f2fe;
   }
   /* PAYMENT BAR END */
+
+
+  .back-to-top {
+    position: fixed !important;
+    right: 220px !important;
+    bottom: 24px !important;
+    z-index: 99999 !important;
+    background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
+    color: #ffe680 !important;
+    border: 2px solid #ffcc00 !important;
+    border-radius: 50px !important;
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 16px rgba(255, 204, 0, 0.75) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: transform 0.2s ease, background 0.2s ease !important;
+  }
+  .back-to-top:hover {
+    background: #ffcc00 !important;
+    color: #140a21 !important;
+    transform: translateY(-3px) scale(1.05) !important;
+  }
+
 /* FLAG COUNTER START */
+  @keyframes trustedGlow {
+    0%, 100% { color: #ffcc00; text-shadow: 0 0 6px rgba(255, 204, 0, 0.7); transform: scale(1); }
+    50% { color: #ffffff; text-shadow: 0 0 14px #ffcc00, 0 0 22px #ff8800; transform: scale(1.04); }
+  }
+  .trusted-box {
+    position: fixed;
+    right: 16px;
+    top: 110px;
+    z-index: 95;
+    background: radial-gradient(circle at 50% 20%, #3b1c5e 0%, #120821 100%);
+    border: 2px solid #ffcc00;
+    border-radius: 12px;
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 204, 0, 0.55);
+    text-align: center;
+    max-width: 210px;
+  }
+  .trusted-text {
+    font-size: 13.5px;
+    font-weight: 900;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    line-height: 1.25;
+    animation: trustedGlow 1.8s infinite ease-in-out;
+  }
+  .trusted-box img {
+    width: 175px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    border: 1.5px solid rgba(255, 204, 0, 0.65);
+  }
   .flag-counter-box {
     position: fixed;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 16px;
+    bottom: 145px;
     z-index: 90;
     background: #0d0717;
     border: 2px solid #a855f7;
@@ -477,10 +517,9 @@
     border-radius: 6px;
   }
   @media (max-width: 1280px) {
-    .flag-counter-box {
+    .trusted-box, .flag-counter-box {
       position: static;
-      transform: none;
-      margin: 24px auto 12px auto;
+      margin: 16px auto;
       width: fit-content;
     }
   }
@@ -666,9 +705,14 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
 <!-- FLAG COUNTER HTML START -->
+  <div class="trusted-box">
+    <div class="trusted-text">⭐ 100% Trusted Seller ⭐</div>
+    <img src="slike/epicnpc.png" alt="EpicNPC Verified Seller">
+  </div>
   <div class="flag-counter-box">
-    <a href="https://info.flagcounter.com/E57c" target="_blank" rel="noopener"><img src="https://s01.flagcounter.com/count2/E57c/bg_000000/txt_FFFFFF/border_CCCCCC/columns_1/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+    <a href="https://flagcounter.com" target="_blank" rel="noopener"><img src="https://flagcounter.com" alt="Flag Counter" border="0"></a>
   </div>
   <!-- FLAG COUNTER HTML END -->
 </body>
