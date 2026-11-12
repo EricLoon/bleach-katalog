@@ -434,7 +434,7 @@
 
   .back-to-top {
     position: fixed !important;
-    right: 128px !important;
+    right: 145px !important;
     bottom: 24px !important;
     z-index: 99999 !important;
     background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
@@ -513,6 +513,24 @@
   }
   /* FLAG COUNTER END */
 
+  .live-top-box {
+    position: fixed;
+    top: 294px;
+    left: calc(50% + 540px + ((50vw - 540px) / 2));
+    transform: translateX(-50%);
+    z-index: 96;
+    width: 112px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: #0d0717;
+    border: 2px solid #a855f7;
+    border-top: 1.5px solid #ffcc00;
+    border-radius: 0 0 10px 10px;
+    padding: 6px 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85), 0 0 14px rgba(255, 204, 0, 0.4);
+  }
   .flag-clean-wrap {
     position: fixed;
     top: 15px;
@@ -521,12 +539,13 @@
     z-index: 95;
     background: #0d0717;
     border: 2px solid #a855f7;
-    border-radius: 10px;
-    padding: 6px;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    padding: 6px 6px 4px 6px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.85), 0 0 14px rgba(168, 85, 247, 0.45);
   }
   @media (max-width: 1520px) {
-    .flag-clean-wrap {
+    .live-top-box, .flag-clean-wrap {
       position: static;
       transform: none;
       margin: 16px auto;
@@ -595,14 +614,7 @@
     <img src="slike/banner.jpg" alt="Bleach Soul Resonance Promo Banner">
   </div>
   <!-- FULL BANNER HTML END -->
-  <div class="discord-bar"><span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span><span class="discord-tag" id="dcTag">GenesisGacha#0271</span><button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button><!-- LIVE COUNTER START -->
-    <div style="display:inline-flex; align-items:center; gap:6px; background:rgba(0,0,0,0.55); border:1px solid #ffcc00; border-radius:6px; padding:3px 9px; box-shadow:0 0 10px rgba(255,204,0,0.35);" title="Real-time visitors online">
-      <span style="display:inline-block; width:8px; height:8px; background:#22c55e; border-radius:50%; box-shadow:0 0 8px #22c55e;"></span>
-      <span style="font-size:12px; font-weight:bold; color:#ffe680;">LIVE:</span>
-      <script id="_waugen">var _wau = _wau || []; _wau.push(["small", "bleachcat26", "gen"]);</script>
-      <script async src="//waust.at/s.js"></script>
-    </div>
-    <!-- LIVE COUNTER END --></div>
+  <div class="discord-bar"><span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span><span class="discord-tag" id="dcTag">GenesisGacha#0271</span><button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button></div>
   <!-- PAYMENT BAR HTML START -->
   <div class="payment-bar">
     <span class="payment-label">💳 Accepted Payment Methods:</span>
@@ -723,6 +735,14 @@ s0.parentNode.insertBefore(s1,s0);
   </div>
   
   <!-- FLAG COUNTER HTML END -->
+  <!-- LIVE COUNTER START -->
+  <div class="live-top-box" title="Real-time visitors online">
+    <span style="display:inline-block; width:8px; height:8px; background:#22c55e; border-radius:50%; box-shadow:0 0 8px #22c55e;"></span>
+    <span style="font-size:12px; font-weight:bold; color:#ffe680;">LIVE:</span>
+    <script id="_waugen">var _wau = _wau || []; _wau.push(["small", "bleachcat26", "gen"]);</script>
+    <script async src="//waust.at/s.js"></script>
+  </div>
+  <!-- LIVE COUNTER END -->
   <div class="flag-clean-wrap">
     <a href="https://info.flagcounter.com/E57c"><img src="https://s01.flagcounter.com/count2/E57c/bg_000000/txt_FFFFFF/border_CCCCCC/columns_1/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
   </div>
