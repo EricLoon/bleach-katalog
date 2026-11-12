@@ -302,9 +302,119 @@
     box-shadow: 0 12px 28px rgba(0, 0, 0, 0.85), 0 4px 20px rgba(168, 85, 247, 0.45) !important;
   }
   /* SEAMLESS BANNER END */
+
+
+/* NEBULA & TOP BTN START */
+  @keyframes nebulaBreathe {
+    0%, 100% { opacity: 0.45; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.12); }
+  }
+  
+  
+  
+  
+  
+  
+  @media (max-width: 1150px) {
+    
+  }
+  /* NEBULA & TOP BTN END */
+/* SMOOTH SCROLL & PERF START */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .cosmic-sky, .ember, .meteor {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+  .acc {
+    content-visibility: auto;
+    contain-intrinsic-size: 680px;
+  }
+  /* SMOOTH SCROLL & PERF END */
+
+  .back-to-top {
+    position: fixed !important;
+    right: 18px !important;
+    bottom: 24px !important;
+    z-index: 99999 !important;
+    background: linear-gradient(135deg, #4c1d95 0%, #7e22ce 100%) !important;
+    color: #ffe680 !important;
+    border: 2px solid #ffcc00 !important;
+    border-radius: 50px !important;
+    padding: 12px 18px !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.8px !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 16px rgba(255, 204, 0, 0.75) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: transform 0.2s ease, background 0.2s ease !important;
+  }
+  .back-to-top:hover {
+    background: #ffcc00 !important;
+    color: #140a21 !important;
+    transform: translateY(-3px) scale(1.05) !important;
+  }
+
+/* RED DRIVE BTN START */
+  @keyframes redDriveGlow {
+    0%, 100% { box-shadow: inset 0 0 12px rgba(255, 100, 100, 0.35), 0 2px 8px rgba(220, 38, 38, 0.4); }
+    50% { box-shadow: inset 0 0 20px rgba(255, 204, 0, 0.45), 0 2px 14px rgba(239, 68, 68, 0.85); }
+  }
+  .drive-btn {
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    text-align: center !important;
+    background: linear-gradient(90deg, #5c0a16 0%, #b91c1c 35%, #dc2626 50%, #b91c1c 65%, #5c0a16 100%) !important;
+    color: #fff3b0 !important;
+    font-weight: 900 !important;
+    font-size: 13.5px !important;
+    letter-spacing: 0.9px !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    padding: 11px 14px !important;
+    border-bottom: 2px solid #ff6b6b !important;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85) !important;
+    animation: redDriveGlow 2.2s infinite ease-in-out !important;
+    transition: all 0.2s ease !important;
+  }
+  .drive-btn::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.32), transparent);
+    transform: skewX(-25deg);
+    transition: left 0.5s ease;
+  }
+  .drive-btn:hover::after {
+    left: 150%;
+  }
+  .drive-btn:hover {
+    background: linear-gradient(90deg, #7f1d1d 0%, #dc2626 30%, #ef4444 50%, #dc2626 70%, #7f1d1d 100%) !important;
+    color: #ffffff !important;
+    border-bottom-color: #ffcc00 !important;
+    text-shadow: 0 0 10px rgba(255, 230, 128, 0.95) !important;
+  }
+  /* RED DRIVE BTN END */
 </style>
 </head>
 <body>
+  
+  
+  <!-- NEBULA & TOP BTN HTML START -->
+  <button type="button" class="back-to-top" id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'});document.documentElement.scrollTop=0;document.body.scrollTop=0;">▲ Top</button>
+  <!-- NEBULA & TOP BTN HTML END -->
   <div class="cosmic-sky">
     <div class="stars-bg"></div>
     <div class="meteor m1"></div>
@@ -371,14 +481,25 @@
     HEROJI.forEach(h => {
       const card = document.createElement('div'); card.className = 'hero-card'; card.title = h.ime;
       card.innerHTML = `<img src="${h.slika}"><div class="cb-area"><div class="cb"></div></div>`;
-      card.onclick = () => { const k = h.ime.toLowerCase(); if (odabrani.has(k)) { odabrani.delete(k); card.classList.remove('active'); } else { odabrani.add(k); card.classList.add('active'); } filtriraj(); };
+      card.onclick = () => { const k = h.ime.toLowerCase(); if (odabrani.has(k)) { odabrani.delete(k); card.classList.remove('active'); } else { odabrani.add(k); card.classList.add('active'); } 
+    window.addEventListener('scroll', () => {
+      const btn = document.getElementById('topBtn');
+      if (btn) {
+        if (window.scrollY > 450) btn.classList.add('show');
+        else btn.classList.remove('show');
+      }
+    });
+
+    filtriraj(); };
       grid.appendChild(card);
     });
-    function filtriraj() {
-      const lista = document.getElementById('accounts'); const status = document.getElementById('status'); lista.innerHTML = '';
-      const rez = NALOZI.filter(a => { for (let t of odabrani) { if (!a.heroji.includes(t)) return false; } return true; });
-      if (odabrani.size > 0) { status.innerHTML = `<span>Showing ${rez.length} of ${NALOZI.length} accounts</span> <button class="reset-btn" onclick="ponistiFilter()">✕ Clear Filter</button>`; }
-      else { status.innerHTML = `<span>Showing all ${NALOZI.length} accounts</span>`; }
+    let trenutniRezultati = [];
+    let prikazanoDoSada = 0;
+    const KORAK_PRIKAZA = 24;
+
+    function dodajSljedecuGrupu() {
+      const lista = document.getElementById('accounts');
+      if (prikazanoDoSada >= trenutniRezultati.length) return;
 
       let matchedHtml = '';
       if (odabrani.size > 0) {
@@ -392,14 +513,49 @@
         matchedHtml = `<div class="matched-box"><span class="matched-label">⭐ Matched:</span>${bedzevi}</div>`;
       }
 
-      rez.forEach(a => {
-        const div = document.createElement('div'); div.className = 'acc';
+      const kraj = Math.min(prikazanoDoSada + KORAK_PRIKAZA, trenutniRezultati.length);
+      const fragment = document.createDocumentFragment();
+
+      for (let i = prikazanoDoSada; i < kraj; i++) {
+        const a = trenutniRezultati[i];
+        const div = document.createElement('div');
+        div.className = 'acc';
         const url = DRIVE_LINKOVI[a.naziv] || "";
-        const gumbHtml = url ? `<a href="${url}" target="_blank" rel="noopener" class="drive-btn">📂 Click Here For All Images</a>` : "";
+        const gumbHtml = url ? `<a href="${url}" target="_blank" rel="noopener" class="drive-btn">📸 Click Here For All Images (Google Drive)</a>` : "";
         div.innerHTML = `${gumbHtml}<div class="acc-title">${a.naziv}</div>${matchedHtml}<div class="img-crop-box"><img src="${a.slika}" loading="lazy"><div class="img-fade"></div></div><div class="toggle-wrap"><button type="button" class="toggle-btn" onclick="otvoriDetalje(this)">▼ Click to expand & see Shards & Weapon Stamps</button></div>`;
-        lista.appendChild(div);
-      });
+        fragment.appendChild(div);
+      }
+
+      lista.appendChild(fragment);
+      prikazanoDoSada = kraj;
     }
+
+    function filtriraj() {
+      const lista = document.getElementById('accounts');
+      const status = document.getElementById('status');
+      lista.innerHTML = '';
+      prikazanoDoSada = 0;
+
+      trenutniRezultati = NALOZI.filter(a => {
+        for (let t of odabrani) { if (!a.heroji.includes(t)) return false; }
+        return true;
+      });
+
+      if (odabrani.size > 0) {
+        status.innerHTML = `<span>Showing ${trenutniRezultati.length} of ${NALOZI.length} accounts</span> <button class="reset-btn" onclick="ponistiFilter()">✕ Clear Filter</button>`;
+      } else {
+        status.innerHTML = `<span>Showing all ${NALOZI.length} accounts</span>`;
+      }
+
+      dodajSljedecuGrupu();
+    }
+
+    window.addEventListener('scroll', () => {
+      if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 900)) {
+        dodajSljedecuGrupu();
+      }
+    }, { passive: true });
+
     function otvoriDetalje(btn) { const box = btn.parentElement.previousElementSibling; if (box.classList.contains('expanded')) { box.classList.remove('expanded'); btn.innerText = '▼ Click to expand & see Shards & Weapon Stamps'; } else { box.classList.add('expanded'); btn.innerText = '▲ Click to hide Shards & Weapon Stamps'; } }
     function ponistiFilter() { odabrani.clear(); document.querySelectorAll('.hero-card.active').forEach(c => c.classList.remove('active')); filtriraj(); }
     function kopirajDiscord(btn) { navigator.clipboard.writeText(document.getElementById('dcTag').innerText); btn.innerText = '✓ Copied!'; setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000); }
