@@ -467,8 +467,8 @@
   .trusted-box {
     position: fixed;
     top: 15px;
-    left: calc(50% + 540px + ((50vw - 540px) / 2));
-    transform: translateX(-50%);
+    right: calc(50% + 540px + ((50vw - 540px) / 2));
+    transform: translateX(50%);
     z-index: 95;
     background: radial-gradient(circle at 50% 20%, #3b1c5e 0%, #120821 100%);
     border: 2px solid #ffcc00;
@@ -497,27 +497,9 @@
     display: block;
     border: 1.5px solid rgba(255, 204, 0, 0.65);
   }
-  .flag-counter-box {
-    position: fixed;
-    top: 15px;
-    left: calc((50vw - 540px) / 2);
-    transform: translateX(-50%);
-    z-index: 95;
-    background: #0d0717;
-    border: 2px solid #a855f7;
-    border-radius: 12px;
-    padding: 8px;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.9), 0 0 18px rgba(168, 85, 247, 0.5);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  }
-  .flag-counter-box:hover {
-    border-color: #ffcc00;
-    box-shadow: 0 0 22px rgba(255, 204, 0, 0.75);
-  }
-  .flag-counter-box img {
-    display: block;
-    border-radius: 6px;
-  }
+  
+  
+  
   @media (max-width: 1520px) {
     .trusted-box {
       position: static;
@@ -527,14 +509,31 @@
     }
   }
   @media (max-width: 1520px) {
-    .flag-counter-box {
+    
+  }
+  /* FLAG COUNTER END */
+
+  .flag-clean-wrap {
+    position: fixed;
+    top: 15px;
+    left: calc(50% + 540px + ((50vw - 540px) / 2));
+    transform: translateX(-50%);
+    z-index: 95;
+    background: #0d0717;
+    border: 2px solid #a855f7;
+    border-radius: 10px;
+    padding: 6px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.85), 0 0 14px rgba(168, 85, 247, 0.45);
+  }
+  @media (max-width: 1520px) {
+    .flag-clean-wrap {
       position: static;
       transform: none;
-      margin: 10px auto 16px auto;
+      margin: 16px auto;
       width: fit-content;
     }
   }
-  /* FLAG COUNTER END */
+
 </style>
 </head>
 <body>
@@ -722,9 +721,10 @@ s0.parentNode.insertBefore(s1,s0);
     <div class="trusted-text">⭐ 100% Trusted Seller ⭐</div>
     <img src="slike/epicnpc.png" alt="EpicNPC Verified Seller">
   </div>
-  <div class="flag-counter-box">
-    <a href="https://flagcounter.com" target="_blank" rel="noopener"><img src="https://flagcounter.com" alt="Flag Counter" border="0"></a>
-  </div>
+  
   <!-- FLAG COUNTER HTML END -->
+  <div class="flag-clean-wrap">
+    <a href="https://info.flagcounter.com/E57c"><img src="https://s01.flagcounter.com/count2/E57c/bg_000000/txt_FFFFFF/border_CCCCCC/columns_1/maxflags_10/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+  </div>
 </body>
 </html>
