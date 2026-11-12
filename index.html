@@ -7,16 +7,10 @@
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
   @keyframes bgPulse {
-    0%, 100% { background-color: #08070a; box-shadow: inset 0 0 80px rgba(0,0,0,0.9); }
-    35% { background-color: #21103b; box-shadow: inset 0 0 100px rgba(123, 66, 188, 0.25); }
-    42% { background-color: #0c0814; }
-    44% { background-color: #6b38b5; box-shadow: inset 0 0 180px rgba(235, 210, 255, 0.75); }
-    46% { background-color: #120921; box-shadow: none; }
-    48% { background-color: #8a4fd1; box-shadow: inset 0 0 220px rgba(255, 255, 255, 0.9); }
-    51% { background-color: #190d2e; box-shadow: inset 0 0 90px rgba(123, 66, 188, 0.3); }
-    75% { background-color: #241142; }
+    0%, 100% { background-color: #08070a; box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9); }
+    50% { background-color: #170c29; box-shadow: inset 0 0 110px rgba(123, 66, 188, 0.22); }
   }
-  body { background-color: #08070a; color: #fff; padding: 15px; display: flex; flex-direction: column; align-items: center; animation: bgPulse 4.5s infinite ease-in-out; }
+  body { background-color: #08070a; color: #fff; padding: 15px; display: flex; flex-direction: column; align-items: center; animation: bgPulse 7s infinite ease-in-out; }
   .discord-bar { width: 100%; max-width: 1080px; background: linear-gradient(90deg, #1b1f3b 0%, #5865F2 50%, #1b1f3b 100%); border: 1.5px solid #8ea1e1; border-radius: 10px; padding: 10px 16px; margin-bottom: 12px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px; box-shadow: 0 4px 15px rgba(88, 101, 242, 0.45); text-align: center; }
   .discord-text { font-size: 14px; font-weight: bold; color: #ffffff; letter-spacing: 0.4px; }
   .discord-tag { background: rgba(0, 0, 0, 0.45); color: #ffe680; font-weight: 800; font-size: 14px; padding: 4px 10px; border-radius: 5px; border: 1px solid rgba(255, 255, 255, 0.25); user-select: all; }
@@ -30,10 +24,17 @@
   .hero-card:hover { border-color: #e0c3fc; transform: translateY(-2px); }
   .hero-card.active { border-color: #ffcc00; box-shadow: 0 0 14px rgba(255, 204, 0, 0.95); transform: translateY(-2px) scale(1.02); }
   .hero-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
-  .cb-area { width: 100%; padding: 4px 0; display: flex; justify-content: center; background: #8c76b8; border-top: 1px solid #2b233a; }
-  .cb { width: 15px; height: 15px; border: 1.5px solid #222; background: #9b87c4; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; color: #111; }
-  .hero-card.active .cb { background: #fff; border-color: #000; }
-  .hero-card.active .cb::after { content: "✓"; }
+  @keyframes cbGlow {
+    0%, 100% { border-color: #d8bff8; box-shadow: 0 0 6px rgba(192, 132, 252, 0.6), inset 0 0 4px rgba(192, 132, 252, 0.4); }
+    50% { border-color: #ffcc00; box-shadow: 0 0 14px rgba(255, 204, 0, 0.95), inset 0 0 6px rgba(255, 204, 0, 0.6); }
+  }
+  .cb-area { width: 100%; padding: 6px 0; display: flex; justify-content: center; background: #26173d; border-top: 1.5px solid #482d70; transition: 0.15s; }
+  .hero-card:hover .cb-area { background: #342052; }
+  .hero-card.active .cb-area { background: #3d2400; border-top-color: #ffcc00; }
+  .cb { width: 22px; height: 22px; border: 2px solid #d8bff8; background: #140b24; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #111; animation: cbGlow 1.6s infinite ease-in-out; transition: 0.15s; }
+  .hero-card:hover .cb { border-color: #ffffff; transform: scale(1.08); }
+  .hero-card.active .cb { background: #ffcc00; border-color: #ffffff; box-shadow: 0 0 16px #ffcc00, 0 0 24px #ff8800; animation: none; }
+  .hero-card.active .cb::after { content: "✔"; }
   .status { width: 100%; max-width: 1080px; display: flex; justify-content: center; align-items: center; gap: 12px; padding: 10px 16px; margin-bottom: 16px; background: linear-gradient(90deg, #160c24 0%, #24133b 50%, #160c24 100%); border: 1px solid #5c338f; border-radius: 8px; font-size: 14px; font-weight: bold; color: #e6d4ff; }
   .reset-btn { background: #ffcc00; color: #140a21; border: none; border-radius: 4px; padding: 4px 10px; font-size: 12px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
   .reset-btn:hover { background: #ffffff; }
@@ -53,9 +54,169 @@
   .toggle-btn { background: linear-gradient(90deg, #3b1e5e 0%, #6833a8 50%, #3b1e5e 100%); color: #ffe680; border: 1.5px solid #9b66df; border-radius: 5px; padding: 8px 18px; font-size: 13px; font-weight: bold; letter-spacing: 0.6px; text-transform: uppercase; cursor: pointer; transition: 0.2s; }
   .toggle-btn:hover { background: linear-gradient(90deg, #522982 0%, #8744d6 50%, #522982 100%); color: #ffffff; }
   @media (max-width: 768px) { .accounts { grid-template-columns: 1fr; } .heroes-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; } .bleach-title { font-size: 20px; letter-spacing: 1.5px; } .img-crop-box { max-height: 280px !important; } .img-crop-box.expanded { max-height: 2500px !important; } }
+/* COSMIC THEME START */
+  .cosmic-sky {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .discord-bar, .bleach-panel, .status, .accounts {
+    position: relative;
+    z-index: 2;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; transform: scale(0.9); }
+    50% { opacity: 0.9; transform: scale(1.2); }
+  }
+  .stars-bg {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, #ffffff, transparent),
+      radial-gradient(2px 2px at 28% 72%, #e879f9, transparent),
+      radial-gradient(1.5px 1.5px at 44% 33%, #fde047, transparent),
+      radial-gradient(2px 2px at 67% 15%, #c084fc, transparent),
+      radial-gradient(1.5px 1.5px at 82% 64%, #ffffff, transparent),
+      radial-gradient(2px 2px at 91% 29%, #ffcc00, transparent),
+      radial-gradient(1.5px 1.5px at 19% 88%, #d8b4fe, transparent),
+      radial-gradient(1.5px 1.5px at 56% 81%, #ffffff, transparent),
+      radial-gradient(2px 2px at 74% 48%, #f0abfc, transparent);
+    animation: twinkle 5s infinite ease-in-out;
+  }
+  @keyframes shootingStar {
+    0% { transform: translate(0, 0) rotate(-35deg); opacity: 0; }
+    4% { opacity: 1; }
+    16% { transform: translate(-1100px, 750px) rotate(-35deg); opacity: 0; }
+    100% { transform: translate(-1100px, 750px) rotate(-35deg); opacity: 0; }
+  }
+  .meteor {
+    position: absolute;
+    width: 130px;
+    height: 2px;
+    background: linear-gradient(90deg, #ffffff 0%, #ffcc00 35%, #a855f7 75%, transparent 100%);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 6px #ffcc00);
+    opacity: 0;
+  }
+  .meteor::before {
+    content: "";
+    position: absolute;
+    left: 0; top: -2px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 12px #ffffff, 0 0 20px #ffcc00;
+  }
+  .m1 { top: 6%; left: 95%; animation: shootingStar 7s infinite linear 1s; }
+  .m2 { top: 22%; left: 105%; animation: shootingStar 11s infinite linear 4.5s; }
+  .m3 { top: -2%; left: 68%; animation: shootingStar 9s infinite linear 7.5s; }
+  .m4 { top: 45%; left: 102%; animation: shootingStar 13s infinite linear 10s; }
+  /* COSMIC THEME END */
+/* EXTRA EFFECTS START */
+  @keyframes auraWave {
+    0%, 100% { opacity: 0.35; transform: scaleY(1); }
+    50% { opacity: 0.75; transform: scaleY(1.15); }
+  }
+  .soul-aura {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 180px;
+    background: radial-gradient(ellipse at 50% 100%, rgba(168, 85, 247, 0.45) 0%, rgba(107, 33, 168, 0.15) 55%, transparent 80%);
+    pointer-events: none;
+    animation: auraWave 5s infinite ease-in-out;
+  }
+  @keyframes floatEmber {
+    0% { transform: translateY(0) translateX(0) scale(0.7); opacity: 0; }
+    20% { opacity: 0.95; }
+    80% { opacity: 0.8; }
+    100% { transform: translateY(-95vh) translateX(35px) scale(1.2); opacity: 0; }
+  }
+  .ember {
+    position: absolute;
+    bottom: -15px;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .e1 { left: 4%; width: 4px; height: 4px; background: #ffcc00; box-shadow: 0 0 10px #ffcc00; animation: floatEmber 8s infinite ease-in 0.2s; }
+  .e2 { left: 8%; width: 3px; height: 3px; background: #e879f9; box-shadow: 0 0 10px #e879f9; animation: floatEmber 10.5s infinite ease-in 2.1s; }
+  .e3 { left: 12%; width: 5px; height: 5px; background: #fde047; box-shadow: 0 0 12px #fde047; animation: floatEmber 9.5s infinite ease-in 4.2s; }
+  .e4 { left: 16%; width: 4px; height: 4px; background: #c084fc; box-shadow: 0 0 10px #c084fc; animation: floatEmber 11.5s infinite ease-in 1.1s; }
+  .e5 { left: 20%; width: 3px; height: 3px; background: #ffffff; box-shadow: 0 0 9px #ffcc00; animation: floatEmber 8.5s infinite ease-in 3.4s; }
+  .e6 { left: 25%; width: 5px; height: 5px; background: #ffcc00; box-shadow: 0 0 12px #ff8800; animation: floatEmber 12s infinite ease-in 5.5s; }
+  .e7 { left: 29%; width: 4px; height: 4px; background: #f0abfc; box-shadow: 0 0 10px #f0abfc; animation: floatEmber 9s infinite ease-in 0.8s; }
+  .e8 { left: 33%; width: 3px; height: 3px; background: #fde047; box-shadow: 0 0 9px #fde047; animation: floatEmber 10s infinite ease-in 2.8s; }
+  .e9 { left: 37%; width: 5px; height: 5px; background: #a855f7; box-shadow: 0 0 12px #a855f7; animation: floatEmber 11s infinite ease-in 4.8s; }
+  .e10 { left: 41%; width: 4px; height: 4px; background: #ffcc00; box-shadow: 0 0 10px #ffcc00; animation: floatEmber 7.8s infinite ease-in 1.9s; }
+  .e11 { left: 45%; width: 3px; height: 3px; background: #e879f9; box-shadow: 0 0 9px #e879f9; animation: floatEmber 9.8s infinite ease-in 3.9s; }
+  .e12 { left: 50%; width: 4px; height: 4px; background: #ffffff; box-shadow: 0 0 10px #c084fc; animation: floatEmber 8.8s infinite ease-in 6.1s; }
+  .e13 { left: 54%; width: 4px; height: 4px; background: #ffcc00; box-shadow: 0 0 10px #ffcc00; animation: floatEmber 9.2s infinite ease-in 0.5s; }
+  .e14 { left: 58%; width: 3px; height: 3px; background: #e879f9; box-shadow: 0 0 10px #e879f9; animation: floatEmber 11.2s infinite ease-in 2.7s; }
+  .e15 { left: 62%; width: 5px; height: 5px; background: #fde047; box-shadow: 0 0 12px #fde047; animation: floatEmber 8.9s infinite ease-in 4.9s; }
+  .e16 { left: 66%; width: 4px; height: 4px; background: #c084fc; box-shadow: 0 0 10px #c084fc; animation: floatEmber 10.8s infinite ease-in 1.5s; }
+  .e17 { left: 71%; width: 3px; height: 3px; background: #ffffff; box-shadow: 0 0 9px #ffcc00; animation: floatEmber 8.2s infinite ease-in 3.1s; }
+  .e18 { left: 75%; width: 5px; height: 5px; background: #ffcc00; box-shadow: 0 0 12px #ff8800; animation: floatEmber 11.8s infinite ease-in 5.2s; }
+  .e19 { left: 79%; width: 4px; height: 4px; background: #f0abfc; box-shadow: 0 0 10px #f0abfc; animation: floatEmber 9.4s infinite ease-in 1.3s; }
+  .e20 { left: 83%; width: 3px; height: 3px; background: #fde047; box-shadow: 0 0 9px #fde047; animation: floatEmber 10.3s infinite ease-in 3.6s; }
+  .e21 { left: 87%; width: 5px; height: 5px; background: #a855f7; box-shadow: 0 0 12px #a855f7; animation: floatEmber 11.4s infinite ease-in 6.4s; }
+  .e22 { left: 91%; width: 4px; height: 4px; background: #ffcc00; box-shadow: 0 0 10px #ffcc00; animation: floatEmber 7.6s infinite ease-in 2.4s; }
+  .e23 { left: 94%; width: 3px; height: 3px; background: #e879f9; box-shadow: 0 0 9px #e879f9; animation: floatEmber 9.6s infinite ease-in 4.5s; }
+  .e24 { left: 97%; width: 4px; height: 4px; background: #ffffff; box-shadow: 0 0 10px #c084fc; animation: floatEmber 8.4s infinite ease-in 0.9s; }
+  .acc { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .acc:hover { transform: translateY(-3px); box-shadow: 0 0 24px rgba(255, 204, 0, 0.9), 0 0 36px rgba(168, 85, 247, 0.5) !important; }
+  /* EXTRA EFFECTS END */
 </style>
 </head>
 <body>
+  <div class="cosmic-sky">
+    <div class="stars-bg"></div>
+    <div class="meteor m1"></div>
+    <div class="meteor m2"></div>
+    <div class="meteor m3"></div>
+    <div class="meteor m4"></div>
+    <div class="soul-aura"></div>
+    <div class="ember e1"></div>
+    <div class="ember e2"></div>
+    <div class="ember e3"></div>
+    <div class="ember e4"></div>
+    <div class="ember e5"></div>
+    <div class="ember e6"></div>
+    <div class="ember e7"></div>
+    <div class="ember e8"></div>
+    <div class="ember e9"></div>
+    <div class="ember e10"></div>
+    <div class="ember e11"></div>
+    <div class="ember e12"></div>
+    <div class="ember e13"></div>
+    <div class="ember e14"></div>
+    <div class="ember e15"></div>
+    <div class="ember e16"></div>
+    <div class="ember e17"></div>
+    <div class="ember e18"></div>
+    <div class="ember e19"></div>
+    <div class="ember e20"></div>
+    <div class="ember e21"></div>
+    <div class="ember e22"></div>
+    <div class="ember e23"></div>
+    <div class="ember e24"></div>
+    <div class="ember e2"></div>
+    <div class="ember e3"></div>
+    <div class="ember e4"></div>
+    <div class="ember e5"></div>
+    <div class="ember e6"></div>
+    <div class="ember e7"></div>
+    <div class="ember e8"></div>
+    <div class="ember e9"></div>
+    <div class="ember e10"></div>
+    <div class="ember e11"></div>
+    <div class="ember e12"></div>
+    <div class="ember e2"></div>
+    <div class="ember e3"></div>
+    <div class="ember e4"></div>
+    <div class="ember e5"></div>
+    <div class="ember e6"></div>
+  </div>
   <div class="discord-bar"><span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span><span class="discord-tag" id="dcTag">GenesisGacha#0271</span><button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button></div>
   <div class="bleach-panel"><div class="bleach-title">BLEACH: SOUL RESONANCE</div><div class="bleach-subtitle">EU • APLUS GUEST STARTER CATALOG • SELECT HEROES TO FILTER</div><div id="heroes" class="heroes-grid"></div></div>
   <div id="status" class="status"></div>
