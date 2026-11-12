@@ -229,9 +229,66 @@
     .img-crop-box.expanded { max-height: 2500px !important; }
   }
 
+/* DISCORD BAR START */
+  .discord-bar {
+    width: 100%;
+    max-width: 1080px;
+    background: linear-gradient(90deg, #1b1f3b 0%, #5865F2 50%, #1b1f3b 100%);
+    border: 1.5px solid #8ea1e1;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(88, 101, 242, 0.45);
+    text-align: center;
+  }
+  .discord-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+  }
+  .discord-tag {
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffe680;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    user-select: all;
+  }
+  .copy-discord-btn {
+    background: #ffcc00;
+    color: #111;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 11px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.15s;
+  }
+  .copy-discord-btn:hover {
+    background: #ffffff;
+    transform: scale(1.04);
+  }
+  /* DISCORD BAR END */
 </style>
 </head>
 <body>
+  <!-- DISCORD BAR HTML START -->
+  <div class="discord-bar">
+    <span class="discord-text">💬 For any questions, prices or more images, add me on Discord:</span>
+    <span class="discord-tag" id="dcTag">GenesisGacha#0271</span>
+    <button type="button" class="copy-discord-btn" onclick="kopirajDiscord(this)">📋 Copy</button>
+  </div>
+  <!-- DISCORD BAR HTML END -->
   <!-- BLEACH BANNER START -->
   <div class="bleach-panel">
     <div class="bleach-title">BLEACH: SOUL RESONANCE</div>
@@ -261,7 +318,23 @@
     function ponistiFilter() {
       odabrani.clear();
       document.querySelectorAll('.hero-card.active').forEach(c => c.classList.remove('active'));
-      filtriraj();
+      
+    function kopirajDiscord(btn) {
+      const tag = document.getElementById('dcTag').innerText;
+      navigator.clipboard.writeText(tag);
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000);
+    }
+
+    filtriraj();
+    }
+
+    
+    function kopirajDiscord(btn) {
+      const tag = document.getElementById('dcTag').innerText;
+      navigator.clipboard.writeText(tag);
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000);
     }
 
     filtriraj();
@@ -317,7 +390,23 @@
     function ponistiFilter() {
       odabrani.clear();
       document.querySelectorAll('.hero-card.active').forEach(c => c.classList.remove('active'));
-      filtriraj();
+      
+    function kopirajDiscord(btn) {
+      const tag = document.getElementById('dcTag').innerText;
+      navigator.clipboard.writeText(tag);
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000);
+    }
+
+    filtriraj();
+    }
+
+    
+    function kopirajDiscord(btn) {
+      const tag = document.getElementById('dcTag').innerText;
+      navigator.clipboard.writeText(tag);
+      btn.innerText = '✓ Copied!';
+      setTimeout(() => { btn.innerText = '📋 Copy'; }, 2000);
     }
 
     filtriraj();
